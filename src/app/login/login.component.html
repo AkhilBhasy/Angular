@@ -1,5 +1,14 @@
-<h1>{{aim}}</h1>
+<!-- <h1>{{aim}}</h1>
 <h3>Login Here</h3>
     <input type="text" id="uname"  placeholder="User Name" (change)="accChange($event)"><br>
     <input type="password" id="pwd" placeholder="Password" (change)="pswdChange($event)"><br>
-    <button (click)="login()">Login</button>
+    <button (click)="login()">Login</button> -->
+
+
+
+
+    <h1>{{aim}}</h1>
+<h3>Login Here</h3>
+    <input type="text" id="uname"  placeholder="User Name" #acn ><br>
+    <input type="password" id="pwd" placeholder="Password" #pwd><br>
+    <button (click)="login(acn,pwd)">Login</button>

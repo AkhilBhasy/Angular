@@ -23,27 +23,44 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  accChange(event: any) {
-    this.acno = event.target.value
-  }
-  pswdChange(event: any) {
-    this.pswd = event.target.value
-  }
-  login() {
-    var acno = this.acno
-    var pswd = this.pswd
-    let acc_details = this.user
-    if (acno in acc_details) {
-      if (pswd == acc_details[acno]["password"]) {
-        alert("Login Sucessful")
-      }
-      else {
-        alert("Incorrect Password")
-      }
+//   accChange(event: any) {
+//     this.acno = event.target.value
+//   }
+//   pswdChange(event: any) {
+//     this.pswd = event.target.value
+//   }
+//   login() {
+//     var acno = this.acno
+//     var pswd = this.pswd
+//     let acc_details = this.user
+//     if (acno in acc_details) {
+//       if (pswd == acc_details[acno]["password"]) {
+//         alert("Login Sucessful")
+//       }
+//       else {
+//         alert("Incorrect Password")
+//       }
+//     }
+//     else {
+//       alert("Invalid User")
+//     }
+//   }
+// }
+
+login(a:any,p:any) {
+  var acno = a.value
+  var pswd = p.value
+  let acc_details = this.user
+  if (acno in acc_details) {
+    if (pswd == acc_details[acno]["password"]) {
+      alert("Login Sucessful")
     }
     else {
-      alert("Invalid User")
+      alert("Incorrect Password")
     }
   }
+  else {
+    alert("Invalid User")
+  }
 }
-
+}
