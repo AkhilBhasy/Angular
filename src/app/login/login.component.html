@@ -9,7 +9,9 @@
 
     <h1>{{aim}}</h1>
 <h3>Login Here</h3>
-    <input type="text" id="uname"  placeholder="User Name" [(ngModel)]="acno" ><br>
-    <input type="password" id="pwd" placeholder="Password" [(ngModel)]="pswd"><br>
-    <button (click)="login()">Login</button>
+<form (ngSubmit)="login()">
+    <input type="text" id="acno" name="acno"  placeholder="Account Number" [(ngModel)]="acno" ><br>
+    <input type="password" id="pwd" name="pwd" placeholder="Password" [(ngModel)]="pswd"><br>
+    <input type="submit" value="Log In">
     <a href="" routerLink="register">SignUp</a>
+</form>

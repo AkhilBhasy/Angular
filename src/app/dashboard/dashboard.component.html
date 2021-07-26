@@ -1,1 +1,15 @@
-<p>dashboard works!</p>
+<h1>{{aim}}</h1>
+<h3>Deposit Form</h3>
+<form (ngSubmit)="deposit()">
+<input type="text" id="acno" name="acno" placeholder="Account Number" [(ngModel)]="acno"><br>
+<input type="password" id="pwd" name="pwd" placeholder="Password" [(ngModel)]="pswd"><br>
+<input type="text" id="amt" name="amt" placeholder="Amount" [(ngModel)]="amt"><br>
+<input type="submit" value="Deposit">
+</form><br><br><br>
+<h3>Withdrawal Form</h3>
+<form (ngSubmit)="withdraw()">
+<input type="text" id="acnow" name="acnow" placeholder="Account Number" [(ngModel)]="acnow"><br>
+<input type="password" id="pwdw" name="pwdw" placeholder="Password" [(ngModel)]="pswdw"><br>
+<input type="text" id="amtw" name="amtw" placeholder="Amount" [(ngModel)]="amtw"><br>
+<input type="submit" value="withdraw">
+</form>
