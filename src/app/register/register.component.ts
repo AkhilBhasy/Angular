@@ -11,9 +11,9 @@ import { DataService } from '../services/data.service';
 })
 export class RegisterComponent implements OnInit {
   aim = " National Bank"
-  uname = ""
-  acno = ""
-  pswd = ""
+  // uname = ""
+  // acno = ""
+  // pswd = ""
 
   registerForm = this.fb.group(
     {

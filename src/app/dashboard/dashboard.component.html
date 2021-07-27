@@ -1,15 +1,22 @@
 <h1>{{aim}}</h1>
+<h5>Welcome {{user}}</h5>
 <h3>Deposit Form</h3>
-<form (ngSubmit)="deposit()">
-<input type="text" id="acno" name="acno" placeholder="Account Number" [(ngModel)]="acno"><br>
-<input type="password" id="pwd" name="pwd" placeholder="Password" [(ngModel)]="pswd"><br>
-<input type="text" id="amt" name="amt" placeholder="Amount" [(ngModel)]="amt"><br>
+<form [formGroup]="depositForm" (ngSubmit)="deposit()">
+<input type="text" id="acno" name="acno" placeholder="Account Number" formControlName="acno"><br>
+<div *ngIf="(this.depositForm.get('acno')?.touched|| this.depositForm.get('acno')?.dirty)&& this.depositForm.get('acno')?.errors" class="errors">Invalid Account Number</div>
+<input type="password" id="pwd" name="pwd" placeholder="Password" formControlName="pswd"><br>
+<div *ngIf="(this.depositForm.get('pswd')?.touched|| this.depositForm.get('pswd')?.dirty)&& this.depositForm.get('pswd')?.errors" class="errors">Invalid Password</div>
+<input type="text" id="amt" name="amt" placeholder="Amount" formControlName="amt"><br>
+<div *ngIf="(this.depositForm.get('amt')?.touched|| this.depositForm.get('amt')?.dirty)&& this.depositForm.get('amt')?.errors" class="errors">Incorrect Amount</div>
 <input type="submit" value="Deposit">
 </form><br><br><br>
 <h3>Withdrawal Form</h3>
-<form (ngSubmit)="withdraw()">
-<input type="text" id="acnow" name="acnow" placeholder="Account Number" [(ngModel)]="acnow"><br>
-<input type="password" id="pwdw" name="pwdw" placeholder="Password" [(ngModel)]="pswdw"><br>
-<input type="text" id="amtw" name="amtw" placeholder="Amount" [(ngModel)]="amtw"><br>
+<form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+    <input type="text" id="acnow" name="acnow" placeholder="Account Number" formControlName="acnow"><br>
+    <div *ngIf="(this.withdrawForm.get('acnow')?.touched|| this.withdrawForm.get('acnow')?.dirty)&& this.withdrawForm.get('acnow')?.errors" class="errors">Invalid Account Number</div>
+    <input type="password" id="pwdw" name="pwdw" placeholder="Password" formControlName="pswdw"><br>
+    <div *ngIf="(this.withdrawForm.get('pswdw')?.touched|| this.withdrawForm.get('pswdw')?.dirty)&& this.withdrawForm.get('pswdw')?.errors" class="errors">Invalid Password</div>
+    <input type="text" id="amtw" name="amtw" placeholder="Amount" formControlName="amtw"><br>
+    <div *ngIf="(this.withdrawForm.get('amtw')?.touched|| this.withdrawForm.get('amtw')?.dirty)&& this.withdrawForm.get('amtw')?.errors" class="errors">Incorrect Amount</div>
 <input type="submit" value="withdraw">
 </form>

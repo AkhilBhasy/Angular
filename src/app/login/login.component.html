@@ -9,9 +9,11 @@
 
     <h1>{{aim}}</h1>
 <h3>Login Here</h3>
-<form (ngSubmit)="login()">
-    <input type="text" id="acno" name="acno"  placeholder="Account Number" [(ngModel)]="acno" ><br>
-    <input type="password" id="pwd" name="pwd" placeholder="Password" [(ngModel)]="pswd"><br>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <input type="text" id="acno" name="acno" formControlName="acno" placeholder="Account Number"  ><br>
+    <div *ngIf="(this.loginForm.get('acno')?.touched|| this.loginForm.get('acno')?.dirty)&& this.loginForm.get('acno')?.errors" class="errors">Invalid Account Number</div>
+    <input type="password" id="pswd" name="pswd" formControlName="pswd" placeholder="Password" ><br>
+    <div *ngIf="(this.loginForm.get('pswd')?.touched|| this.loginForm.get('pswd')?.dirty)&& this.loginForm.get('pswd')?.errors" class="errors">Invalid Password</div>
     <input type="submit" value="Log In">
     <a href="" routerLink="register">SignUp</a>
 </form>
