@@ -1,5 +1,7 @@
+<div class="m1">
 <h1>{{aim}}</h1>
-<h5>Welcome {{user}}</h5>
+<h5>Welcome {{userName}}</h5><br>
+<a href="" routerLink="/transaction">Transaction History</a>
 <h3>Deposit Form</h3>
 <form [formGroup]="depositForm" (ngSubmit)="deposit()">
 <input type="text" id="acno" name="acno" placeholder="Account Number" formControlName="acno"><br>
@@ -20,3 +22,14 @@
     <div *ngIf="(this.withdrawForm.get('amtw')?.touched|| this.withdrawForm.get('amtw')?.dirty)&& this.withdrawForm.get('amtw')?.errors" class="errors">Incorrect Amount</div>
 <input type="submit" value="withdraw">
 </form>
+<div class="col-4">
+
+
+<br>
+<app-delete-confirmation (onCancel)="onCancel()" (onDelete)="onDelete($event)" [item]="acno"></app-delete-confirmation>
+<br>
+<br>
+
+<button id="b1" class="btn btn-danger" (click)="DeleteAcc()">Delete Account</button>
+</div>
+</div>

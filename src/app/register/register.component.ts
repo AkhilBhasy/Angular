@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     {
       acno: ['', [Validators.required, Validators.minLength(4), Validators.pattern('[0-9]*')]],
       uname: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-      pswd: ['', [Validators.required, Validators.pattern('[0-9a-zA-Z]*'),Validators.minLength(5)]]
+      pswd: ['', [Validators.required, Validators.pattern('[0-9a-zA-Z]*'), Validators.minLength(5)]]
     }
   )
 
@@ -33,19 +33,22 @@ export class RegisterComponent implements OnInit {
       var acno = this.registerForm.value.acno
       var pswd = this.registerForm.value.pswd
 
-      var result = this.ds.register(acno, uname, pswd)
-      if (result) {
-        alert("Registration Sucessfull")
-        this.router.navigateByUrl("")
-      }
-      else {
-        alert("User already exits.....! please log in")
-        this.router.navigateByUrl("")
-      }
-    }
+      this.ds.register(acno, uname, pswd)
+        .subscribe((result: any) => {
+          if (result) {
+            alert(result.message)
+            this.router.navigateByUrl("")
+          }
+        },
+          (result) => {
+            alert(result.error.message)
 
+            this.router.navigateByUrl("")
+          }
+        )
+  }
     else {
-      alert("Invalid form")
+  alert("Invalid form")
+}
     }
   }
-}

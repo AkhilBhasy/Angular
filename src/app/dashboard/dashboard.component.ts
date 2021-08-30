@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DataService } from '../services/data.service';
 })
 export class DashboardComponent implements OnInit {
   aim = " National Bank"
- user=this.ds.currentUser
+ //user=this.ds.currentUser
   // acno = ""
   // pswd = ""
   // amt = ""
@@ -32,7 +33,14 @@ export class DashboardComponent implements OnInit {
       amtw: ['', [Validators.required, Validators.pattern('[0-9]*')]]
     }
   )
-  constructor(private ds: DataService, private fb: FormBuilder) { }
+
+  userName:any
+  acno:any
+
+
+  constructor(private ds: DataService, private fb: FormBuilder,private router:Router) {
+    this.userName=localStorage.getItem("userName")
+   }
 
   ngOnInit(): void {
   }
@@ -41,10 +49,17 @@ export class DashboardComponent implements OnInit {
       var acno = this.depositForm.value.acno
       var pswd = this.depositForm.value.pswd
       var amt = this.depositForm.value.amt
-      var result = this.ds.deposit(acno, pswd, amt)
-      if (result) {
-        alert("Amount " + amt + "Credited. Balance: " + result)
+      this.ds.deposit(acno, pswd, amt)
+      .subscribe((result:any)=>{
+        if(result){
+          alert(result.message)
+        }
+      },
+      (result)=> {
+        alert(result.error.message)
+        
       }
+      )
     }
     else {
       alert("Invalid form")
@@ -56,14 +71,51 @@ export class DashboardComponent implements OnInit {
       var pswdw = this.withdrawForm.value.pswdw
       var amtw = this.withdrawForm.value.amtw
 
-      var resultw = this.ds.withdraw(acnow, pswdw, amtw)
-      if (resultw) {
-        alert("Amount " + amtw + "debited. Balance: " + resultw)
-
+      this.ds.withdraw(acnow, pswdw, amtw)
+      .subscribe((result:any)=>{
+        if(result){
+          alert(result.message)
+        }
+      },
+      (result)=> {
+        alert(result.error.message)
+        
       }
+      )
     }
     else {
       alert("Invalid form")
     }
+  //     if (resultw) {
+  //       alert("Amount " + amtw + "debited. Balance: " + resultw)
+
+  //     }
+  //   }
+  //   else {
+  //     alert("Invalid form")
+  //   }
+  // }
+}
+DeleteAcc(){
+  this.acno=localStorage.getItem("currentAcc")
+}
+
+onDelete(event:any){
+  //alert(event)
+  this.ds.deleteAcc(event)
+  .subscribe((result:any)=>{
+    if(result){
+      alert(result.message)
+      this.router.navigateByUrl("")
+    }
+  },
+  (result)=>{
+    alert(result.error.message)
   }
+  )
+}
+
+onCancel(){
+  this.acno=""
+}
 }

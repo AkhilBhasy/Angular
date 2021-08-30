@@ -2,3 +2,25 @@
 .errors{
     color: red;
 }
+
+.m1{
+    background-color: navajowhite;
+    height: 800px;
+    width: 100%;
+}
+
+.m2{
+    color: orangered;
+    text-align: center;
+}
+.m3{
+    width: 300px;
+    height: 200px;
+    margin-top: 100px;
+    margin-left: 600px;
+    background-color: rosybrown;
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
+    text-align: center;
+}
