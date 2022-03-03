@@ -13,8 +13,10 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
     <input type="text" id="acno" name="acno" formControlName="acno" placeholder="Account Number"  ><br>
     <div *ngIf="(this.loginForm.get('acno')?.touched|| this.loginForm.get('acno')?.dirty)&& this.loginForm.get('acno')?.errors" class="errors">Invalid Account Number</div>
-    <input type="password" id="pswd" name="pswd" formControlName="pswd" placeholder="Password" ><br>
-    <div *ngIf="(this.loginForm.get('pswd')?.touched|| this.loginForm.get('pswd')?.dirty)&& this.loginForm.get('pswd')?.errors" class="errors">Invalid Password</div>
+    <input type="text" id="uname" name="uname" formControlName="uname" placeholder="User name" ><br>
+   <div *ngIf="(this.loginForm.get('uname')?.touched|| this.loginForm.get('uname')?.dirty)&& this.loginForm.get('uname')?.errors" class="errors">Invalid user name</div> 
+   <input type="password" id="pswd" name="pswd" formControlName="pswd" placeholder="Password" ><br>
+   <div *ngIf="(this.loginForm.get('pswd')?.touched|| this.loginForm.get('pswd')?.dirty)&& this.loginForm.get('pswd')?.errors" class="errors">Invalid Password</div> 
     <input type="submit" value="Log In">
     <a href="" routerLink="register">SignUp</a>
 </form>

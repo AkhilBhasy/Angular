@@ -16,12 +16,12 @@ export class DataService {
   currentUser = ""
 currentAcc=""
   user: any = {
-    1000: { acno: 1000, uname: "Akhil", password: "userone", balance: 5000,transaction:[] },
-    1001: { acno: 1001, uname: "Shinu", password: "usertwo", balance: 3000,transaction:[]},
-    1002: { acno: 1002, uname: "Hiran", password: "userthree", balance: 2000,transaction:[] },
-    1003: { acno: 1003, uname: "Sayooj", password: "userfour", balance: 3000,transaction:[] },
-    1004: { acno: 1004, uname: "Binu", password: "userfive", balance: 1000,transaction:[] }
-  }
+  //   1000: { acno: 1000, uname: "Akhil", password: "userone", balance: 5000,transaction:[] },
+  //   1001: { acno: 1001, uname: "Shinu", password: "usertwo", balance: 3000,transaction:[]},
+  //   1002: { acno: 1002, uname: "Hiran", password: "userthree", balance: 2000,transaction:[] },
+  //   1003: { acno: 1003, uname: "Sayooj", password: "userfour", balance: 3000,transaction:[] },
+  //   1004: { acno: 1004, uname: "Binu", password: "userfive", balance: 1000,transaction:[] }
+   }
 
 
   constructor(private http:HttpClient) {
@@ -86,12 +86,24 @@ currentAcc=""
 
 //     }
   }
+
+ 
+
   login(acno: any, pswd: any) {
     const data={
       acno,
       pswd
     }
+
+
+   fetch("https://621f300d311a70591403902f.mockapi.io/users").then(res => res.json()).then(data => console.log(data));
+
+
     return this.http.post("http://localhost:3000/login",data,options)
+
+
+
+
     // let acc_details = this.user
     // if (acno in acc_details) {
     //   if (pswd == acc_details[acno]["password"]) {
